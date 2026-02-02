@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --color-blue: #0F2B3F;
+    --color-white: #F1F1F1;
+    --color-orange: #F83C3C;
+    --color-gray: #333333
+}
+
+@font-face {
+    font-family: 'Mont';
+    src: url(../public/fonts/Mont-Regular.ttf);
+}
