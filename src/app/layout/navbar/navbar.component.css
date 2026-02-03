@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #001f3f; 
+  background-color: var(--color-blue); 
   height: 80px;
   display: flex;
   align-items: center;
@@ -42,7 +42,7 @@
 }
 
 .navbar-links a {
-  color: #ffffff;
+  color: var(--color-white);
   text-decoration: none;
   font-weight: 600;
   font-size: 15px;
@@ -51,7 +51,7 @@
 
 .navbar-links a:hover, 
 .active-link {
-  color: #00aaff;
+  color: var(--color-orange);
 }
 
 .navbar-actions {
@@ -61,8 +61,8 @@
 }
 
 .btn-contact {
-  background-color: #007bff; 
-  color: white;
+  background-color: var(--color-orange); 
+  color: var(--color-white);
   padding: 12px 28px;
   border-radius: 50px;
   text-decoration: none;
@@ -80,6 +80,56 @@
   border: none;
   cursor: pointer;
   padding: 5px;
+}
+
+
+.dropdown {
+  position: relative;
+}
+
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%; 
+  left: 0;
+  background-color: var(--color-white);
+  min-width: 200px;
+  list-style: none;
+  padding: 15px 0;
+  margin: 0;
+  border-radius: 4px; 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+  
+  
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu li a {
+  color: var(--color-blue) !important;
+  padding: 10px 20px;
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.dropdown-menu li a:hover {
+  color: var(--color-orange) !important;
+}
+
+.dropdown > a::after {
+  font-size: 10px;
+  vertical-align: middle;
+  margin-left: 5px;
 }
 
 

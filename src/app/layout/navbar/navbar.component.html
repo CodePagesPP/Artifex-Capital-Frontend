@@ -1,20 +1,27 @@
 <nav class="navbar">
   <div class="navbar-container">
     <div class="navbar-brand">
-      <img src="assets/logo-ire.png" alt="IRE Group" class="logo-primary">
+      <img src="assets/logo" alt="" class="logo-primary">
       <div class="vertical-divider"></div>
-      <img src="assets/logo-moove.png" alt="Moove In" class="logo-secondary">
+      <img src="assets/logo" alt="" class="logo-secondary">
     </div>
 
     <ul class="navbar-links">
       <li><a routerLink="/who-we-are" routerLinkActive="active-link">Who We Are</a></li>
-      <li><a routerLink="/what-we-do" routerLinkActive="active-link">What We Do</a></li>
-      <li><a routerLink="/investor-relations" routerLinkActive="active-link">Investor Relations</a></li>
+      <li class="dropdown">
+        <a routerLinkActive="active-link">Investments Offerings</a>
+        <ul class="dropdown-menu">
+          <li><a routerLink="/curring-projects">Curring Projects</a></li>
+          <li><a routerLink="/case-studies">Case Studies Projects</a></li>
+          <li><a routerLink="/incoming-projects">Incoming Projects</a></li>
+        </ul>
+      </li>
+      <li><a routerLink="/learn-about-us" routerLinkActive="active-link">Learn About Us</a></li>
     </ul>
 
     <div class="navbar-actions">
-      <a routerLink="/contact" class="btn-contact">Contact Us</a>
-      <a routerLink="/contact" class="btn-contact">Login</a>
+      <a routerLink="/contact-us" class="btn-contact">Contact Us</a>
+      <a routerLink="/login" class="btn-contact">Login</a>
     </div>
   </div>
 </nav>

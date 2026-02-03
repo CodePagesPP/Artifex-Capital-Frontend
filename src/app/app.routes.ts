@@ -14,6 +14,18 @@ export const routes: Routes = [
             {
                 path: 'who-we-are',
                 loadComponent: () => import('./who-we-are/who-we-are.component').then(m => m.WhoWeAreComponent)
+            },
+            {
+                path: 'curring-projects',
+                loadComponent: () => import('./curring-projects/curring-projects.component').then(m => m.CurringProjectsComponent)
+            },
+            {
+                path: 'contact-us',
+                loadComponent: () => import('./contact/contact.component').then(m => m.ContactComponent)
+            },
+            {
+                path: 'learn-about-us',
+                loadComponent: () => import('./learn-about-us/learn-about-us.component').then(m => m.LearnAboutUsComponent)
             }
         ]
     },

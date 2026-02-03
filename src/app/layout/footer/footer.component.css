@@ -1,6 +1,6 @@
 .site-footer {
     width: 100%;
-    color: #ffffff; 
+    color: var(--color-white); 
 }
 
 .footer-social-bar {
@@ -15,7 +15,7 @@
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    color: white;
+    color: var(--color-white);
     font-size: 1.8rem;
     position: relative;
     overflow: hidden;   
@@ -91,7 +91,7 @@
     font-size: 1.2rem;
     font-weight: 600;
     margin-bottom: 20px;
-    color: #fff;
+    color: var(--color-white);
 }
 
 .footer-column p {
@@ -124,7 +124,7 @@
 }
 
 .quick-links a:hover {
-    color: #fff;
+    color: var(--color-white);
     padding-left: 5px; 
 }
 
