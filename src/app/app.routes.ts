@@ -1,17 +1,24 @@
 import { Routes } from '@angular/router';
+import { PublicLayoutComponent } from './layout/public-layout/public-layout.component';
 
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: 'home',
-        pathMatch: 'full'
-    },
-    {
-        path: 'home',
-        loadComponent: () => import('./landing/landing.component').then(m => m.LandingComponent)
+        component: PublicLayoutComponent,
+        children: [
+            {
+                path: '',
+                redirectTo: 'who-we-are',
+                pathMatch: 'full'
+            },
+            {
+                path: 'who-we-are',
+                loadComponent: () => import('./who-we-are/who-we-are.component').then(m => m.WhoWeAreComponent)
+            }
+        ]
     },
     {
         path: '**',
-        redirectTo: 'home'
+        redirectTo: 'who-we-are'
     }
 ];
