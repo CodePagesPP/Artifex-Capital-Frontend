@@ -1,0 +1,106 @@
+.container-main { width: 100%; overflow-x: hidden; }
+
+.hero {
+  height: 450px;
+  background-image: url('/case-studies-projects/header.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-overlay {
+  background-color: rgba(45, 118, 185, 0.85);
+  color: var(--color-white);
+  padding: 3rem;
+  text-align: center;
+  max-width: 800px;
+  backdrop-filter: blur(4px);
+}
+
+.hero-content h1 { font-size: 2.5rem; margin-bottom: 1rem; font-weight: 600; }
+.hero-content p { font-size: 1.2rem; font-weight: 300; }
+
+
+.breadcrumb {
+  background-color: var(--color-blue);
+  color: var(--color-white);
+  padding: 10px;
+  text-align: center;
+  font-size: 0.75rem;
+}
+.breadcrumb .separator { margin: 0 8px; opacity: 0.5; }
+.breadcrumb .muted { opacity: 0.7; }
+.breadcrumb .active { font-weight: bold; }
+
+
+.offerings-section {
+  padding: 4rem 10%;
+  text-align: center;
+}
+
+.offerings-section h2 { color: var(--color-blue); font-size: 2rem; margin-bottom: 1.5rem; }
+
+.description {
+  max-width: 900px;
+  margin: 0 auto 3rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.property-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 4rem;
+}
+
+.property-card h3 {
+  letter-spacing: 2px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 1.5rem 0;
+}
+
+.image-placeholder {
+  height: 250px;
+  background: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-placeholder img { max-height: 100%; width: 100%; object-fit: contain; }
+
+
+.btn-primary {
+  background-color: var(--color-blue);
+  color: var(--color-white);
+  border: none;
+  padding: 12px 30px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.btn-primary:hover { background-color: #005a96; }
+.btn-large { padding: 15px 45px; font-size: 1rem; }
+
+
+.cta-section {
+  background: linear-gradient(135deg, #e0f2fe 0%, #ffffff 50%, #e0f2fe 100%);
+  padding-top: 5rem;
+  position: relative;
+  text-align: center;
+}
+
+.cta-content h2 { color: var(--text-dark); font-size: 2.2rem; }
+.cta-content p { color: var(--text-muted); margin: 1rem 0 2rem; }
+
+.contact-info { margin: 3rem 0; font-size: 0.9rem; }
+.contact-info .name { font-weight: bold; font-size: 1.1rem; margin-bottom: 5px; }
+.contact-info .role { color: var(--text-muted); margin-bottom: 15px; }
+.contact-info a { display: block; color: var(--primary-blue); text-decoration: none; margin: 4px; }
+

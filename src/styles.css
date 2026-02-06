@@ -21,3 +21,14 @@
     list-style: none;
     box-sizing: border-box;
 }
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    user-select: none;
+    overflow-x: hidden;
+}
