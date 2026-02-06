@@ -1,42 +1,39 @@
 <div class="current-offerings-container">
 
   <section class="hero-banner">
-    <div class="hero-content">
+    <div class="hero-content" data-aos="zoom-in" data-aos-duration="1000">
       <h1>Construction</h1>
     </div>
   </section>
 
   <section class="description-section">
     <div class="content-grid">
-      <div class="text-content">
+      <div class="text-content" data-aos="fade-right" data-aos-delay="200">
         <h2 class="title-primary">Self Storage Construction Can Be Complicated</h2>
-        <p class="subtitle">Building a new self storage facility from the ground up or expanding an existing one can be
-          challenging.</p>
+        <p class="subtitle">Building a new self storage facility from the ground up or expanding an existing one can be challenging.</p>
 
         <p class="intro-text">
           Commercial construction has more regulations and nuances. Our team manages the entire process:
         </p>
 
         <ul class="check-list">
-          <li><i class="fas fa-check-circle"></i> Completing necessary applications.</li>
-          <li><i class="fas fa-check-circle"></i> Following specific municipal requirements.</li>
-          <li><i class="fas fa-check-circle"></i> Architects, engineers and contractors selection.</li>
-          <li><i class="fas fa-check-circle"></i> Stormwater management and building codes.</li>
-          <li><i class="fas fa-check-circle"></i> Complying with ADA requirements.</li>
-          <li><i class="fas fa-check-circle"></i> Obtaining certificate of occupancy.</li>
+          <li data-aos="fade-up" data-aos-delay="300"><i class="fas fa-check-circle"></i> Completing necessary applications.</li>
+          <li data-aos="fade-up" data-aos-delay="400"><i class="fas fa-check-circle"></i> Following specific municipal requirements.</li>
+          <li data-aos="fade-up" data-aos-delay="500"><i class="fas fa-check-circle"></i> Architects, engineers and contractors selection.</li>
+          <li data-aos="fade-up" data-aos-delay="600"><i class="fas fa-check-circle"></i> Stormwater management and building codes.</li>
+          <li data-aos="fade-up" data-aos-delay="700"><i class="fas fa-check-circle"></i> Complying with ADA requirements.</li>
+          <li data-aos="fade-up" data-aos-delay="800"><i class="fas fa-check-circle"></i> Obtaining certificate of occupancy.</li>
         </ul>
       </div>
 
-      <div class="image-content">
+      <div class="image-content" data-aos="fade-left" data-aos-delay="400">
         <img src="curring-projects/construction-site.webp" alt="Construction Site" class="main-image shadow-effect">
       </div>
     </div>
   </section>
 
   <section class="projects-portfolio">
-
-
-    <div class="project-tabs-container">
+    <div class="project-tabs-container" data-aos="fade-up">
       <div class="project-tabs">
         <button *ngFor="let project of projects; let i = index" (click)="selectProject(i)"
           [class.active]="selectedProjectIndex === i" class="tab-btn">
@@ -45,10 +42,8 @@
       </div>
     </div>
 
-    <div class="project-display card">
-
+    <div class="project-display card" data-aos="fade-up" data-aos-offset="200">
       <div class="display-grid" [class.fade-in-up]="animateClass">
-
         <div class="project-image-wrapper">
           <img [src]="projects[selectedProjectIndex].image" class="project-img-preview">
         </div>
@@ -64,14 +59,11 @@
             <span class="unit-text">Units</span>
           </div>
         </div>
-
       </div>
     </div>
-
-
   </section>
 
-  <section class="contact-cta">
+  <section class="contact-cta" data-aos="flip-up">
     <div class="cta-content">
       <h2>Ready to start your project?</h2>
       <p>Contact Investment Real Estate Today</p>
@@ -79,13 +71,13 @@
     </div>
   </section>
 
-
-  <div class="portfolio-header">
+  <div class="portfolio-header" data-aos="fade-up">
     <h3 class="name-text">Tom Kilko, P.E.</h3>
     <p class="role">Director of Development and Construction</p>
     <div class="contact-info">
-      <span class="contact-item"><i class="fas fa-envelope"></i> <a
-          href="mailto:tkilko@irellc.com">tkilko&#64;irellc.com</a></span>
+      <span class="contact-item"><i class="fas fa-envelope"></i> 
+        <a href="mailto:tkilko@irellc.com">tkilko&#64;irellc.com</a>
+      </span>
       <span class="contact-item"><i class="fas fa-phone"></i> 717-893-0513</span>
     </div>
   </div>

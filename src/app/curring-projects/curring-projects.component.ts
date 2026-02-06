@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import Aos from 'aos';
 
 @Component({
   selector: 'app-curring-projects',
@@ -45,12 +46,12 @@ export class CurringProjectsComponent {
   ];
 
   selectProject(index: number) {
-    if (this.selectedProjectIndex === index) return;
-    
     this.selectedProjectIndex = index;
-    this.animateClass = false; 
+    this.animateClass = false;
+    
     setTimeout(() => {
       this.animateClass = true;
+      Aos.refresh();
     }, 10);
-  }
+}
 }
