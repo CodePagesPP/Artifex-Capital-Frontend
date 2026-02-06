@@ -1,3 +1,5 @@
+@import 'aos/dist/aos.css';
+
 :root {
     --color-blue: #0F2B3F;
     --color-white: #F1F1F1;
