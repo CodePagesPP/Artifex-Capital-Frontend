@@ -1,5 +1,10 @@
 import { Routes } from '@angular/router';
-import { PublicLayoutComponent } from './layout/public-layout/public-layout.component';
+import { PublicLayoutComponent } from './components/layout/public-layout/public-layout.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { authenticatedGuard } from './core/guards/authenticated.guard';
+import { authGuard } from './core/guards/auth.guard';
+import { roleGuard } from './core/guards/role.guard';
+import { PrivateLayoutComponent } from './components/layout/private-layout/private-layout.component';
 
 export const routes: Routes = [
     {
@@ -13,25 +18,44 @@ export const routes: Routes = [
             },
             {
                 path: 'who-we-are',
-                loadComponent: () => import('./who-we-are/who-we-are.component').then(m => m.WhoWeAreComponent)
+                loadComponent: () => import('./components/who-we-are/who-we-are.component').then(m => m.WhoWeAreComponent)
             },
             {
                 path: 'curring-projects',
-                loadComponent: () => import('./curring-projects/curring-projects.component').then(m => m.CurringProjectsComponent)
+                loadComponent: () => import('./components/curring-projects/curring-projects.component').then(m => m.CurringProjectsComponent)
             },
             {
                 path: 'case-studies-projects',
-                loadComponent: () => import('./case-studies-projects/case-studies-projects.component').then(m => m.CaseStudiesProjectsComponent)
+                loadComponent: () => import('./components/case-studies-projects/case-studies-projects.component').then(m => m.CaseStudiesProjectsComponent)
             },
             {
                 path: 'contact-us',
-                loadComponent: () => import('./contact/contact.component').then(m => m.ContactComponent)
+                loadComponent: () => import('./components/contact/contact.component').then(m => m.ContactComponent)
             },
             {
                 path: 'learn-about-us',
-                loadComponent: () => import('./learn-about-us/learn-about-us.component').then(m => m.LearnAboutUsComponent)
+                loadComponent: () => import('./components/learn-about-us/learn-about-us.component').then(m => m.LearnAboutUsComponent)
             }
-        ]
+        ],
+        canActivate: [authenticatedGuard]
+    },
+    {
+        path: '',
+        component: PrivateLayoutComponent,
+        canActivate: [authGuard],
+        children: [
+            {
+                path: 'projects',
+                loadComponent: () => import('./components/projects/projects.component').then(m => m.ProjectsComponent),
+                canActivate: [roleGuard],
+                data: { roles: ['ADMIN_ACCESS'] }
+            }
+        ],
+    },
+    {
+        path: 'login',
+        component: LoginComponent,
+        canActivate: [authenticatedGuard]
     },
     {
         path: '**',
