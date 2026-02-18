@@ -5,6 +5,7 @@ import { authenticatedGuard } from './core/guards/authenticated.guard';
 import { authGuard } from './core/guards/auth.guard';
 import { roleGuard } from './core/guards/role.guard';
 import { PrivateLayoutComponent } from './components/layout/private-layout/private-layout.component';
+import { RegisterComponent } from './components/auth/register/register.component';
 
 export const routes: Routes = [
     {
@@ -48,13 +49,18 @@ export const routes: Routes = [
                 path: 'projects',
                 loadComponent: () => import('./components/projects/projects.component').then(m => m.ProjectsComponent),
                 canActivate: [roleGuard],
-                data: { roles: ['ADMIN_ACCESS'] }
+                data: { roles: ['ADMIN_ACCESS','CLIENT_ACCESS' ] }
             }
         ],
     },
     {
         path: 'login',
         component: LoginComponent,
+        canActivate: [authenticatedGuard]
+    },
+    {
+        path: 'register',
+        component: RegisterComponent,
         canActivate: [authenticatedGuard]
     },
     {

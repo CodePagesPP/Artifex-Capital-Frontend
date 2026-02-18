@@ -16,9 +16,7 @@ export class ProjectService {
   constructor(private http: HttpClient, private authService: AuthService) {}
 
   getAllProjects(): Observable<Project[]> {
-    return this.http.get<Project[]>(this.apiUrl, {
-      headers: this.authService.getAuthHeaders(),
-    });
+    return this.http.get<Project[]>(this.apiUrl);
   }
 
   getProjectById(id: number): Observable<Project> {
