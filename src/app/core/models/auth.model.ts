@@ -16,3 +16,19 @@ export interface User{
   createdAt: Date;
   updatedAt: Date;
 }
+
+
+export interface ClientRegistration {
+
+    name: string;
+    lastName: string;
+    email: string;
+    password?: string;
+    phoneNumber: string;
+    country: string;
+    city: string;
+    sex: 'M' | 'F' | 'O'; 
+
+    projectId: number;
+    plannedInvestment: number;
+}
