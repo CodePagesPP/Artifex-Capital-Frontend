@@ -17,6 +17,6 @@ export const roleGuard: CanActivateFn = (route, state) => {
 
   const hasRole = expectedRoles.some(r => userRoles.includes(r));
   
-  return hasRole ? true : router.createUrlTree(['/projects']);
+  return hasRole ? true : router.createUrlTree([authService.getDefaultRoute()]);
 };
 

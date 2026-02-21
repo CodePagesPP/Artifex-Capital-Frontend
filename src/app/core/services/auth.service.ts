@@ -12,7 +12,27 @@ export class AuthService {
 
   private apiUrl = `${environment.apiUrl}/auth`;
   private tokenKey = 'token'
+  private roleRouteMap: { [key: string]: string } = {
+    'ADMIN_ACCESS': '/projects',
+    'CLIENT_ACCESS': '/c/projects'
+  };
   constructor(private http: HttpClient, private router: Router) { }
+
+
+  public getDefaultRoute(): string {
+    const roles = this.getAuthorities();
+
+
+    if (roles.includes('ADMIN_ACCESS')) {
+      return this.roleRouteMap['ADMIN_ACCESS'];
+    }
+    if (roles.includes('CLIENT_ACCESS')) {
+      return this.roleRouteMap['CLIENT_ACCESS'];
+    }
+
+    
+    return '/login'; 
+  }
 
   public getAuthHeaders(): HttpHeaders {
     const token = localStorage.getItem(this.tokenKey);

@@ -1,0 +1,143 @@
+<div class="admin-container">
+    <header class="admin-header">
+        <div class="header-content">
+            <h1>Client Management</h1>
+
+            <div class="search-bar">
+                <span class="search-icon"><i class="fas fa-search"></i></span>
+                <input type="text" 
+                       placeholder="Search by name, last name or email..." 
+                       (input)="onSearchChange($event)">
+            </div>
+        </div>
+    </header>
+
+    <main class="table-responsive">
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>Client</th>
+                    <th>Contact</th>
+                    <th>Location</th>
+                    <th>Project of Interest</th>
+                    <th>Assigned Projects</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let client of clients">
+                    <td>
+                        <div class="client-name">{{ client.name }} {{ client.lastName }}</div>
+                    </td>
+                    <td>
+                        <div><i class="fas fa-envelope" style="color: var(--color-gray); margin-right: 5px;"></i> {{ client.email }}</div>
+                        <div style="margin-top: 5px;"><i class="fas fa-phone" style="color: var(--color-gray); margin-right: 5px;"></i> {{ client.phoneNumber }}</div>
+                    </td>
+                    <td><i class="fas fa-map-marker-alt" style="color: var(--color-orange); margin-right: 5px;"></i> {{ client.city }}, {{ client.country }}</td>
+
+                    <td class="font-bold text-blue">
+                        {{ client.projectOfInterest?.title || 'None' }}
+                    </td>
+
+                    <td>
+                        <span class="badge badge-assigned">
+                            {{ client.assignedProjects?.length || 0 }} assigned
+                        </span>
+                    </td>
+
+                    <td class="actions-cell">
+                        <button class="btn-icon edit" (click)="openEditModal(client)"
+                            title="Manage Projects">
+                            <i class="fas fa-cog"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <div class="pagination-container" *ngIf="totalPages > 0">
+        <div class="pagination-info">
+            Showing page {{ currentPage + 1 }} of {{ totalPages }} ({{ totalElements }} total clients)
+        </div>
+        <div class="pagination-actions">
+            <button class="btn-page" (click)="prevPage()" [disabled]="currentPage === 0">
+                <i class="fas fa-chevron-left"></i> Previous
+            </button>
+            <span class="page-number">{{ currentPage + 1 }}</span>
+            <button class="btn-page" (click)="nextPage()" [disabled]="currentPage === totalPages - 1">
+                Next <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" *ngIf="showModal" (click)="closeModal()">
+        <div class="modal-card" (click)="$event.stopPropagation()">
+
+            <div class="modal-header">
+                <h2>Manage Projects: {{ selectedClient?.name }}</h2>
+                <button class="close-btn" (click)="closeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div class="info-banner">
+                    <p><i class="fas fa-envelope" style="margin-right: 5px;"></i> <strong>Email:</strong> {{ selectedClient?.email }}</p>
+                    <p><i class="fas fa-wallet" style="margin-right: 5px;"></i> <strong>Planned Investment:</strong> ${{ selectedClient?.plannedInvestment }}</p>
+                </div>
+
+                <form class="vanilla-form">
+                    <div class="form-section">
+                        <h3>1. Main Project of Interest</h3>
+                        <p class="section-desc">The project the client selected upon registration. You can change it if they changed their mind.</p>
+                        <div class="form-group">
+                            <select [(ngModel)]="selectedProjectIdOfInterest" name="projectOfInterest">
+                                <option [ngValue]="null">-- None --</option>
+                                <option *ngFor="let proj of projects" [ngValue]="proj.id">
+                                    {{ proj.title }} ({{ proj.city }})
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <hr class="divider">
+
+                    <div class="form-section">
+                        <h3>2. Assign Projects (Portfolio)</h3>
+                        <p class="section-desc">Select the projects in which the client is already actively participating.</p>
+
+                        <div class="projects-checkbox-grid">
+                            <div class="project-assignment-wrapper" *ngFor="let proj of projects">
+
+                                <div class="checkbox-card" [class.selected-card]="isProjectSelected(proj.id!)"
+                                    (click)="toggleProject(proj.id!)">
+
+                                    <div class="checkbox-content">
+                                        <span class="proj-title">{{ proj.title }}</span>
+                                        <span class="proj-status">{{ proj.status }}</span>
+                                    </div>
+                                    <div class="check-icon" *ngIf="isProjectSelected(proj.id!)">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                </div>
+
+                                <div class="investment-input-container fade-in" *ngIf="isProjectSelected(proj.id!)">
+                                    <label>Invested Amount ($):</label>
+                                    <input type="number" [(ngModel)]="projectInvestments[proj.id!]"
+                                        name="amount_{{proj.id}}" class="amount-input" placeholder="0.00" min="0">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-secondary" (click)="closeModal()">Cancel</button>
+                <button class="btn-primary" (click)="saveClientChanges()"><i class="fas fa-save" style="margin-right: 5px;"></i> Save Changes</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,435 @@
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;    
+    padding-bottom: 10px;
+}
+
+.header-content h1 {
+    margin: 0;
+    border-bottom: none; 
+}
+
+
+.search-bar {
+    position: relative;
+    width: 100%;
+    max-width: 350px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px 15px 10px 35px;
+    border: 2px solid #e2e8f0;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    color: var(--color-gray);
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: var(--color-white);
+}
+
+.search-bar input:focus {
+    border-color: var(--color-orange);
+    box-shadow: 0 0 0 3px rgba(248, 60, 60, 0.1);
+}
+
+.search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+    font-size: 1rem;
+    pointer-events: none; 
+}
+
+.admin-container {
+    padding: 20px;
+    background-color: var(--color-white);
+    min-height: 100vh;
+}
+
+.admin-header h1 {
+    color: var(--color-blue);
+    border-bottom: 2px solid var(--color-orange);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+
+.table-responsive {
+    overflow-x: auto;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th {
+    background-color: var(--color-blue);
+    color: white;
+    padding: 15px;
+    text-align: left;
+}
+
+.admin-table td {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    color: var(--color-gray);
+    vertical-align: middle;
+}
+
+.client-name {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--color-blue);
+}
+
+.text-blue {
+    color: var(--color-blue);
+}
+
+.investment-badge {
+    display: inline-block;
+    background-color: #e0f2fe;
+    color: #0284c7;
+    font-size: 0.8rem;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-top: 5px;
+}
+
+.badge-assigned {
+    background-color: var(--color-orange);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+
+.actions-cell {
+    text-align: center;
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.btn-icon:hover {
+    transform: scale(1.2);
+}
+
+
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(15, 43, 63, 0.7); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-card {
+    background: white;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    overflow: hidden;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-header {
+    background-color: var(--color-blue);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.modal-body {
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.info-banner {
+    background-color: var(--color-white);
+    padding: 10px 15px;
+    border-left: 4px solid var(--color-orange);
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+.form-section h3 {
+    color: var(--color-blue);
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+.section-desc {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.divider {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 20px 0;
+}
+
+
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: var(--color-gray);
+}
+
+
+.projects-checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.hidden-checkbox {
+    display: none;
+}
+
+.checkbox-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: var(--color-white);
+}
+
+.checkbox-card:hover {
+    border-color: #cbd5e1;
+    background-color: #f8fafc;
+}
+
+
+.checkbox-card.selected-card {
+    border-color: var(--color-orange);
+    background-color: #fff5f5; 
+    box-shadow: 0 4px 10px rgba(248, 60, 60, 0.15);
+}
+
+
+.checkbox-card.selected-card .proj-title {
+    color: var(--color-orange);
+}
+
+.checkbox-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.proj-title {
+    font-weight: bold;
+    color: var(--color-blue);
+    font-size: 1rem;
+    margin-bottom: 4px;
+    transition: color 0.3s ease;
+}
+
+.proj-status {
+    font-size: 0.75rem;
+    color: var(--color-gray);
+    font-weight: 500;
+}
+
+
+.check-icon {
+    background-color: var(--color-orange);
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+    animation: popIn 0.2s ease-out forwards;
+}
+
+
+@keyframes popIn {
+    0% { transform: scale(0); }
+    100% { transform: scale(1); }
+}
+
+.modal-footer {
+    padding: 15px 20px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    background-color: var(--color-white);
+}
+
+.btn-primary {
+    background-color: var(--color-orange);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #d63333;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-gray);
+    border: 1px solid var(--color-gray);
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.pagination-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: var(--color-white);
+    border-radius: 8px;
+    margin-top: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.pagination-info {
+    color: var(--color-gray);
+    font-size: 0.9rem;
+}
+
+.pagination-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.btn-page {
+    background-color: var(--color-blue);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.btn-page:hover:not(:disabled) {
+    background-color: var(--color-orange);
+}
+
+.btn-page:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    color: #666;
+}
+
+.page-number {
+    font-weight: bold;
+    color: var(--color-blue);
+    padding: 5px 10px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+}
+
+
+@media (max-width: 600px) {
+    .pagination-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+
+.project-assignment-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+
+.investment-input-container {
+    background-color: #f8fafc;
+    border: 1px dashed var(--color-orange);
+    border-radius: 6px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.investment-input-container label {
+    font-size: 0.85rem;
+    color: var(--color-gray);
+    font-weight: 600;
+    margin: 0;
+}
+
+.amount-input {
+    width: 100px;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-weight: bold;
+    color: var(--color-blue);
+    text-align: right;
+    outline: none;
+}
+
+.amount-input:focus {
+    border-color: var(--color-orange);
+}
+
+
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}

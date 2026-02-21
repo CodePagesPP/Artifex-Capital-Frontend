@@ -26,10 +26,12 @@ export class LoginComponent {
     this.authService.login(this.credentials).subscribe({
       next: (res) => {
         
+
         localStorage.setItem('token', res.token);
 
-        
-        this.router.navigate(['/projects']);
+        const routeToNavigate = this.authService.getDefaultRoute();
+
+        this.router.navigate([routeToNavigate]);
         
         this.loading = false;
       },
