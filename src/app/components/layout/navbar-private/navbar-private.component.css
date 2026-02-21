@@ -1,16 +1,12 @@
-.private-wrapper {
-  display: flex;
-  height: 100vh;
-  background-color: var(--color-white);
-}
-
 .sidebar {
   width: 260px;
+  height: 100vh; /* Ocupa todo el alto disponible */
   background-color: var(--color-blue);
   display: flex;
   flex-direction: column;
   padding: 2rem 1rem;
-  border-right: 1px solid var(--color-gray);
+  border-right: 1px solid #ccc;
+  z-index: 100;
 }
 
 .brand {
@@ -21,56 +17,40 @@
 .logo-v {
   max-width: 120px;
   height: auto;
-  
   filter: brightness(0) invert(1); 
 }
 
 .navigation {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.5rem;
 }
 
 .nav-link {
+  display: block;
+  padding: 12px 15px;
   color: var(--color-white);
   text-decoration: none;
-  padding: 1rem;
   border-radius: 6px;
-  display: flex;
-  align-items: center;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
+  border-left: 4px solid transparent; 
   font-weight: 500;
 }
 
-.nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.05);
+.nav-link:hover:not(.active) {
+  background-color: rgba(255, 255, 255, 0.1);
 }
-
 
 .nav-link.active {
   background-color: var(--color-orange);
   color: var(--color-white);
-  box-shadow: 0 4px 15px rgba(248, 60, 60, 0.3);
+  font-weight: bold;
+  border-left: 4px solid var(--color-white); 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.dot {
-  width: 8px;
-  height: 8px;
-  background-color: transparent;
-  border-radius: 50%;
-  margin-right: 12px;
-}
-
-.nav-link.active .dot {
-  background-color: var(--color-white);
-}
-
-.content-area {
-  flex: 1;
-  overflow-y: auto;
-  padding: 2rem;
-  color: var(--color-gray);
+.sidebar-footer {
+  margin-top: auto; /* Empuja el botón hacia abajo */
 }
 
 .btn-exit {
@@ -82,6 +62,7 @@
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.3s;
+  font-weight: bold;
 }
 
 .btn-exit:hover {
@@ -89,26 +70,57 @@
   color: var(--color-white);
 }
 
-.nav-link {
-  display: block;
-  padding: 12px 15px;
-  color: var(--color-white);
-  text-decoration: none;
-  border-radius: 6px;
-  margin-bottom: 8px;
-  transition: all 0.3s ease;
-  border-left: 4px solid transparent; 
-}
+/* =========================================
+   RESPONSIVE COMPONENTE NAVBAR
+   ========================================= */
+@media (max-width: 768px) {
+  
+  /* Se convierte en una barra superior (Header) */
+  .sidebar {
+    width: 100%;
+    height: 70px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    border-right: none;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
 
+  .brand { margin-bottom: 0; }
+  .logo-v { max-width: 80px; }
+  
+  .sidebar-footer { margin-top: 0; }
+  .btn-exit { padding: 0.5rem 1rem; font-size: 0.85rem; }
 
-.nav-link.active {
-  background-color: var(--color-orange);
-  color: var(--color-white);
-  font-weight: bold;
-  border-left: 4px solid var(--color-white); 
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
+  /* Se despega del header y se va al fondo de la pantalla */
+  .navigation {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-blue);
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 5px;
+    gap: 0;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.15);
+  }
 
-.nav-link:hover:not(.active) {
-  background-color: rgba(255, 255, 255, 0.1);
+  .nav-link {
+    margin-bottom: 0;
+    padding: 10px 5px;
+    font-size: 0.85rem;
+    text-align: center;
+    border-left: none;
+    border-bottom: 3px solid transparent;
+    border-radius: 4px;
+    flex: 1;
+  }
+
+  .nav-link.active {
+    border-left: none;
+    border-bottom: 3px solid var(--color-white);
+    box-shadow: none;
+  }
 }

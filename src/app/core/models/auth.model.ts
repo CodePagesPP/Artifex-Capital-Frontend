@@ -32,3 +32,10 @@ export interface ClientRegistration {
     projectId: number;
     plannedInvestment: number;
 }
+
+export interface MenuItem {
+  label: string;
+  route: string;
+  icon: string;
+  roles: string[]; 
+}

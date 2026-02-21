@@ -1,5 +1,6 @@
 :host {
   display: flex;
+  flex-direction: row; /* En escritorio van lado a lado */
   height: 100vh;
   width: 100%;
   overflow: hidden;
@@ -7,7 +8,21 @@
 
 .content-wrapper {
   flex: 1; 
-  background-color: var(--color-white);
+  background-color: #f8fafc; /* Un gris muy tenue para contraste */
   overflow-y: auto; 
   padding: 2rem;
+}
+
+/* =========================================
+   RESPONSIVE LAYOUT PADRE
+   ========================================= */
+@media (max-width: 768px) {
+  :host {
+    flex-direction: column; /* En móvil van uno arriba del otro */
+  }
+
+  .content-wrapper {
+    padding: 1rem;
+    padding-bottom: 80px; /* Espacio extra para que la navegación inferior no tape el contenido */
+  }
 }

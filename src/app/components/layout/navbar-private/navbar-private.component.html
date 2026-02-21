@@ -1,20 +1,21 @@
-<div class="private-wrapper">
-  <aside class="sidebar">
-    <div class="brand">
-      <img src="assets/logo-vertical.png" alt="Logo" class="logo-v">
-    </div>
+<aside class="sidebar">
+  <div class="brand">
+    <img src="assets/logo-vertical.png" alt="Logo" class="logo-v">
+  </div>
 
-    <nav class="navigation">
-      <a routerLink="/projects" routerLinkActive="active" class="nav-link">
-        Projects
-      </a>
-      <a routerLink="/config" routerLinkActive="active" class="nav-link">
-        Configuration
-      </a>
-    </nav>
+  <nav class="navigation">
+    <a *ngFor="let item of menuItems" 
+       [routerLink]="item.route" 
+       routerLinkActive="active" 
+       class="nav-link">
+      <i class="fas {{ item.icon }}" style="margin-right: 10px;"></i>
+      {{ item.label }}
+    </a>
+  </nav>
 
-    <footer class="sidebar-footer">
-      <button class="btn-exit" (click)="logout()">Log out</button>
-    </footer>
-  </aside>
-</div>
+  <footer class="sidebar-footer">
+    <button class="btn-exit" (click)="logout()">
+      <i class="fas fa-sign-out-alt" style="margin-right: 5px;"></i> Log out
+    </button>
+  </footer>
+</aside>

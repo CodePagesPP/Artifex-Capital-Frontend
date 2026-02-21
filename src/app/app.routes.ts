@@ -49,7 +49,19 @@ export const routes: Routes = [
                 path: 'projects',
                 loadComponent: () => import('./components/projects/projects.component').then(m => m.ProjectsComponent),
                 canActivate: [roleGuard],
-                data: { roles: ['ADMIN_ACCESS','CLIENT_ACCESS' ] }
+                data: { roles: ['ADMIN_ACCESS' ] }
+            },
+            {
+                path: 'c/projects',
+                loadComponent: () => import('./components/project-clients/project-clients.component').then(m => m.ProjectClientsComponent),
+                canActivate: [roleGuard],
+                data: { roles: ['CLIENT_ACCESS' ] }
+            },
+            {
+                path: 'clients',
+                loadComponent: () => import('./components/clients/clients.component').then(m => m.ClientsComponent),
+                canActivate: [roleGuard],
+                data: { roles: ['ADMIN_ACCESS' ] }
             }
         ],
     },
