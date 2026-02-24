@@ -6,6 +6,8 @@ import { authGuard } from './core/guards/auth.guard';
 import { roleGuard } from './core/guards/role.guard';
 import { PrivateLayoutComponent } from './components/layout/private-layout/private-layout.component';
 import { RegisterComponent } from './components/auth/register/register.component';
+import { ForgotPasswordComponent } from './components/auth/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './components/auth/reset-password/reset-password.component';
 
 export const routes: Routes = [
     {
@@ -73,6 +75,16 @@ export const routes: Routes = [
     {
         path: 'register',
         component: RegisterComponent,
+        canActivate: [authenticatedGuard]
+    },
+    {
+        path: 'forgot-password',
+        component: ForgotPasswordComponent,
+        canActivate: [authenticatedGuard]
+    },
+    {
+        path: 'reset-password',
+        component: ResetPasswordComponent,
         canActivate: [authenticatedGuard]
     },
     {
