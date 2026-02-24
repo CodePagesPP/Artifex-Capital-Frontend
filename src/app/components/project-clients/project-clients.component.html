@@ -1,1 +1,61 @@
-<p>project-clients works!</p>
+<div class="investor-container">
+    <header class="investor-header">
+        <h1>Mi Portafolio de Inversión</h1>
+        <div class="summary-banner">
+            <div class="summary-item">
+                <span class="label">Total Invertido</span>
+                <span class="value">${{ totalInvested | number:'1.2-2' }}</span>
+            </div>
+            <div class="summary-item">
+                <span class="label">Proyectos Activos</span>
+                <span class="value">{{ myInvestments.length }}</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="projects-grid">
+        <div class="project-card" *ngFor="let item of myInvestments">
+            <div class="card-img-wrapper" (click)="openGallery(item.project)" style="cursor: pointer;">
+                <img [src]="getPreviewImg(item.project.photoUrls)" alt="Project Preview">
+                <div class="gallery-hint">Ver Galería ({{item.project.photoUrls.length}})</div>
+                <div class="progress-badge">{{ item.project.progress }}%</div>
+            </div>
+
+            <div class="card-body">
+                <h3>{{ item.project.title }}</h3>
+                <p class="location">📍 {{ item.project.city }}, {{ item.project.country }}</p>
+
+                <div class="investment-detail">
+                    <div class="detail-row">
+                        <span>Inversión Personal:</span>
+                        <strong>${{ item.investedAmount | number:'1.2-2' }}</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span>Estado:</span>
+                        <span class="status-tag">{{ item.project.status }}</span>
+                    </div>
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" [style.width.%]="item.project.progress"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" *ngIf="showGalleryModal" (click)="closeGallery()">
+    <div class="gallery-card" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+            <h2>Avances del Proyecto</h2>
+            <button class="close-btn" (click)="closeGallery()">×</button>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item" *ngFor="let url of selectedProjectPhotos">
+                <img [src]="projectService.getImgUrl(url)" alt="Avance">
+            </div>
+        </div>
+    </div>
+</div>

@@ -37,7 +37,7 @@ export class NavbarPrivateComponent implements OnInit{
         roles: [this.ADMIN]
       },
       {
-        label: 'Projects',
+        label: 'My Projects',
         route: '/c/projects',
         icon: 'fa-folder-open',
         roles: [this.CLIENT]
