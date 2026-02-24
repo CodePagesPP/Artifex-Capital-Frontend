@@ -4,6 +4,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { Client, ClientUpdateData, Page } from '../models/client.model';
 import { Observable } from 'rxjs';
+import { ClientProjectResponse } from '../models/project-client.model';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,12 @@ private apiUrl = `${environment.apiUrl}/clients`;
     const url = `${this.apiUrl}/${clientId}/projects`;
     
     return this.http.put<Client>(url, updateData, {
+      headers: this.authService.getAuthHeaders()
+    });
+  }
+
+  getMyProjects(): Observable<ClientProjectResponse[]> {
+    return this.http.get<ClientProjectResponse[]>(`${this.apiUrl}/me/projects`, {
       headers: this.authService.getAuthHeaders()
     });
   }
