@@ -2,9 +2,23 @@
     <header class="admin-header">
         <div class="header-content">
             <h1>Manage Your Projects</h1>
-            <button class="btn-primary" (click)="openCreateModal()">
-                <span>+</span> New Project
-            </button>
+            
+            <div class="filters-container">
+                <div class="search-bar">
+                    <span class="search-icon"><i class="fas fa-search"></i></span>
+                    <input type="text" placeholder="Search by title..." (input)="onSearchChange($event)">
+                </div>
+
+                <select class="status-filter" [(ngModel)]="selectedStatus" (change)="onStatusChange()">
+                    <option value="">All Statuses</option>
+                    <option value="IN_PROGRESS">In Progress</option>
+                    <option value="COMPLETED">Completed</option>
+                </select>
+
+                <button class="btn-primary" (click)="openCreateModal()">
+                    <i class="fas fa-plus" style="margin-right: 5px;"></i> New Project
+                </button>
+            </div>
         </div>
     </header>
 
@@ -47,34 +61,59 @@
                         </span>
                     </td>
                     <td class="actions-cell">
-                        <button class="btn-icon edit" (click)="openEditModal(project)">✏️</button>
-                        <button class="btn-icon delete" (click)="deleteProject(project.id!)">🗑️</button>
+                        <button class="btn-icon edit" (click)="openEditModal(project)" title="Edit Project">
+                            <i class="fas fa-pen"></i>
+                        </button>
+                        <button class="btn-icon delete" (click)="deleteProject(project.id!)" title="Delete Project">
+                            <i class="fas fa-trash"></i>
+                        </button>
                     </td>
                 </tr>
             </tbody>
         </table>
     </main>
 
+    <div class="pagination-container" *ngIf="totalPages > 0">
+        <div class="pagination-info">
+            Showing page {{ currentPage + 1 }} of {{ totalPages }} ({{ totalElements }} total projects)
+        </div>
+        <div class="pagination-actions">
+            <button class="btn-page" (click)="prevPage()" [disabled]="currentPage === 0">
+                <i class="fas fa-chevron-left"></i> Previous
+            </button>
+            <span class="page-number">{{ currentPage + 1 }}</span>
+            <button class="btn-page" (click)="nextPage()" [disabled]="currentPage === totalPages - 1">
+                Next <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+
     <div class="modal-overlay" *ngIf="showGalleryModal" (click)="closeGallery()">
         <div class="gallery-card" (click)="$event.stopPropagation()">
             <div class="modal-header">
-                <h2>Image Galery</h2>
-                <button class="close-btn" (click)="closeGallery()">×</button>
+                <h2>Image Gallery</h2>
+                <button class="close-btn" (click)="closeGallery()">
+                    <i class="fas fa-times"></i>
+                </button>
             </div>
             <div class="gallery-grid">
                 <div class="gallery-item" *ngFor="let url of selectedProjectPhotos">
                     <img [src]="projectService.getImgUrl(url)" alt="Project photo">
-                    <button class="delete-photo-btn" (click)="removePhoto(url)">×</button>
+                    <button class="delete-photo-btn" (click)="removePhoto(url)">
+                        <i class="fas fa-times"></i>
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="modal-overlay" *ngIf="showModal">
-        <div class="modal-card">
+    <div class="modal-overlay" *ngIf="showModal" (click)="closeModal()">
+        <div class="modal-card" (click)="$event.stopPropagation()">
             <div class="modal-header">
                 <h2>{{ isEditMode ? 'Edit Project' : 'New Project' }}</h2>
-                <button class="close-btn" (click)="closeModal()">×</button>
+                <button class="close-btn" (click)="closeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
             </div>
 
             <div class="modal-body">
@@ -83,7 +122,7 @@
                         <div class="form-group">
                             <label>Title</label>
                             <input type="text" [(ngModel)]="projectForm.title" name="title"
-                                placeholder="Ej: Torre Washington">
+                                placeholder="Ex: Washington Tower">
                         </div>
                         <div class="form-group">
                             <label>City</label>
@@ -103,7 +142,7 @@
                         </div>
                         <div class="form-group">
                             <label>Progress (%)</label>
-                            <input type="number" [(ngModel)]="projectForm.progress" name="progress">
+                            <input type="number" [(ngModel)]="projectForm.progress" name="progress" min="0" max="100">
                         </div>
                         <div class="form-group">
                             <label>Status</label>
@@ -119,8 +158,8 @@
                         <div class="file-input-wrapper">
                             <input type="file" (change)="onFilesSelected($event)" id="file-upload" multiple>
                             <label for="file-upload" class="custom-file-label">
-                                {{ selectedFiles.length > 0 ? selectedFiles.length + ' selected files' :
-                                'Select files...' }}
+                                <i class="fas fa-upload" style="margin-right: 5px;"></i>
+                                {{ selectedFiles.length > 0 ? selectedFiles.length + ' selected files' : 'Select files...' }}
                             </label>
                         </div>
                     </div>
@@ -130,7 +169,7 @@
             <div class="modal-footer">
                 <button class="btn-secondary" (click)="closeModal()">Cancel</button>
                 <button class="btn-primary" (click)="saveProject()">
-                    {{ isEditMode ? 'Save Changes' : 'Create Project' }}
+                    <i class="fas fa-save" style="margin-right: 5px;"></i> {{ isEditMode ? 'Save Changes' : 'Create Project' }}
                 </button>
             </div>
         </div>

@@ -50,7 +50,7 @@ export class RegisterComponent {
 
 
   loadProjects(): void {
-    this.projectService.getAllProjects().subscribe({
+    this.projectService.getAllProjectsInProgress().subscribe({
       next: (data) => this.projects = data,
       error: (err) => console.error('Error cargando proyectos', err)
     });

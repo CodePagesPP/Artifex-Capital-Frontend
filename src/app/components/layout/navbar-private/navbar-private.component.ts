@@ -47,12 +47,6 @@ export class NavbarPrivateComponent implements OnInit{
         route: '/clients',
         icon: 'fa-users',
         roles: [this.ADMIN] 
-      },
-      {
-        label: 'Configuration',
-        route: '/config',
-        icon: 'fa-cog',
-        roles: [this.ADMIN] 
       }
     ];
   }

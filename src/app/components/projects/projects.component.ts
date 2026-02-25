@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { ProjectService } from '../../core/services/project.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { debounceTime, distinctUntilChanged, Subject, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-projects',
@@ -22,6 +23,16 @@ export class ProjectsComponent {
   selectedFiles: File[] = [];
   showModal = false;
 
+  searchTerm: string = '';
+  selectedStatus: string = '';
+  private searchSubject: Subject<string> = new Subject();
+  private searchSubscription!: Subscription;
+
+  currentPage: number = 0;
+  pageSize: number = 10;
+  totalElements: number = 0;
+  totalPages: number = 0;
+
   projectForm = {
     title: '',
     description: '',
@@ -31,24 +42,70 @@ export class ProjectsComponent {
     status: 'IN_PROGRESS'
   };
 
-  constructor(public projectService: ProjectService) {}
+  constructor(public projectService: ProjectService) { }
 
   ngOnInit(): void {
+    this.loadProjects();
+
+
+    this.searchSubscription = this.searchSubject.pipe(
+      debounceTime(300),
+      distinctUntilChanged()
+    ).subscribe(searchValue => {
+      this.searchTerm = searchValue;
+      this.currentPage = 0;
+      this.loadProjects();
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.searchSubscription) {
+      this.searchSubscription.unsubscribe();
+    }
+  }
+
+  onSearchChange(event: any) {
+    this.searchSubject.next(event.target.value);
+  }
+
+  onStatusChange() {
+    this.currentPage = 0;
     this.loadProjects();
   }
 
   loadProjects() {
-    this.projectService.getAllProjects().subscribe({
-      next: (data) => this.projects = data,
-      error: (err) => console.error('Error al cargar proyectos', err)
-    });
+    this.projectService.getAllProjects(this.currentPage, this.pageSize, this.searchTerm, this.selectedStatus)
+      .subscribe({
+        next: (pageData) => {
+          this.projects = pageData.content;
+          this.totalElements = pageData.totalElements;
+          this.totalPages = pageData.totalPages;
+          this.currentPage = pageData.number;
+        },
+        error: (err) => console.error('Error loading projects', err)
+      });
+  }
+
+
+  nextPage() {
+    if (this.currentPage < this.totalPages - 1) {
+      this.currentPage++;
+      this.loadProjects();
+    }
+  }
+
+  prevPage() {
+    if (this.currentPage > 0) {
+      this.currentPage--;
+      this.loadProjects();
+    }
   }
 
   onFilesSelected(event: any) {
-  if (event.target.files.length > 0) {
-    this.selectedFiles = Array.from(event.target.files);
+    if (event.target.files.length > 0) {
+      this.selectedFiles = Array.from(event.target.files);
+    }
   }
-}
 
   openCreateModal() {
     this.isEditMode = false;
@@ -89,31 +146,31 @@ export class ProjectsComponent {
   }
 
   removePhoto(url: string) {
-  if (!this.currentEditingProjectId) return;
+    if (!this.currentEditingProjectId) return;
 
-  Swal.fire({
-    title: '¿Eliminar foto?',
-    text: "Esta acción es irreversible",
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#d33',
-    confirmButtonText: 'Sí, borrar'
-  }).then((result) => {
-    if (result.isConfirmed) {
-      this.projectService.deleteImage(this.currentEditingProjectId!, url).subscribe({
-        next: (updatedProject) => {
-          this.selectedProjectPhotos = updatedProject.photoUrls;
-          this.loadProjects(); 
-          Swal.fire('Deleted', 'The image has been deleted.', 'success');
-        },
-        error: (err) => {
-          console.error(err);
-          Swal.fire('Error', 'Failed to delete the image.', 'error');
-        }
-      });
-    }
-  });
-}
+    Swal.fire({
+      title: '¿Eliminar foto?',
+      text: "Esta acción es irreversible",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      confirmButtonText: 'Sí, borrar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.projectService.deleteImage(this.currentEditingProjectId!, url).subscribe({
+          next: (updatedProject) => {
+            this.selectedProjectPhotos = updatedProject.photoUrls;
+            this.loadProjects();
+            Swal.fire('Deleted', 'The image has been deleted.', 'success');
+          },
+          error: (err) => {
+            console.error(err);
+            Swal.fire('Error', 'Failed to delete the image.', 'error');
+          }
+        });
+      }
+    });
+  }
 
   saveProject() {
     const formData = new FormData();
@@ -125,7 +182,7 @@ export class ProjectsComponent {
     formData.append('status', this.projectForm.status);
 
     this.selectedFiles.forEach(file => {
-    formData.append('images', file); 
+      formData.append('images', file);
     });
 
     if (this.isEditMode && this.selectedProject?.id) {
@@ -179,8 +236,8 @@ export class ProjectsComponent {
   }
 
   getImg(project: Project) {
-    return project.photoUrls.length > 0 
-      ? this.projectService.getImgUrl(project.photoUrls[0]) 
+    return project.photoUrls.length > 0
+      ? this.projectService.getImgUrl(project.photoUrls[0])
       : 'assets/no-image.png';
   }
 }

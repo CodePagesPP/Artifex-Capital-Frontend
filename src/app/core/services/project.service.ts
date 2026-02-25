@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Project } from '../models/project.model';
 import { AuthService } from './auth.service';
@@ -15,8 +15,22 @@ export class ProjectService {
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 
-  getAllProjects(): Observable<Project[]> {
-    return this.http.get<Project[]>(this.apiUrl);
+  getAllProjects(page: number, size: number, search: string = '', status: string = ''): Observable<any> {
+    let params = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString());
+
+    if (search) params = params.set('search', search);
+    if (status) params = params.set('status', status);
+
+    return this.http.get<any>(this.apiUrl, { 
+      headers: this.authService.getAuthHeaders(),
+      params: params 
+    });
+  }
+
+  getAllProjectsInProgress(): Observable<Project[]> {
+    return this.http.get<Project[]>(`${this.apiUrl}/in-progress`);
   }
 
   getProjectById(id: number): Observable<Project> {
