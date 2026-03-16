@@ -6,12 +6,12 @@
   background: linear-gradient(135deg, #001f3f 0%, #001021 100%);
   padding: 50px 20px;
   text-align: center;
-  color: var(--color-white);
 }
 
 .hero-banner h1 {
   font-size: 3rem;
   margin: 0;
+  color: var(--color-white);
   font-weight: bold;
 }
 
@@ -115,10 +115,14 @@
 .contact-cta {
   background: #000c1d;
   background: linear-gradient(to right, #000c1d, #001f3f);
-  color: var(--color-white);
+
   text-align: center;
   padding: 80px 20px;
   margin-top: 100px;
+}
+
+.cta-content h2, p {
+  color: var(--color-white);
 }
 
 .btn-cta {
@@ -130,6 +134,14 @@
   text-decoration: none;
   font-weight: bold;
   margin-top: 25px;
+}
+
+.project-details .stats {
+  color: black;
+}
+
+.project-details .location {
+  color: black;
 }
 
 
@@ -166,6 +178,10 @@
   color: var(--text-gray);
   font-weight: 600;
   transition: all 0.3s ease;
+}
+
+.intro-text {
+  color: gray;
 }
 
 .tab-btn.active {
