@@ -1,0 +1,131 @@
+.incoming-wrapper {
+    background-color: var(--color-white);
+    padding: 100px 5%;
+    font-family: 'Inter', sans-serif;
+}
+
+.header-minimal {
+    text-align: left;
+    margin-bottom: 80px;
+    border-left: 5px solid var(--color-orange);
+    padding-left: 30px;
+}
+
+.display-title {
+    font-size: 3.5rem;
+    color: var(--color-blue);
+    margin: 0;
+}
+
+.text-orange { color: var(--color-orange); }
+
+.lead-text {
+    font-size: 1.2rem;
+    color: var(--color-gray);
+    margin-top: 10px;
+}
+
+
+.project-row {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    margin-bottom: 120px;
+}
+
+.project-row.reverse {
+    flex-direction: row-reverse;
+}
+
+.project-image {
+    flex: 1;
+    position: relative;
+}
+
+.image-wrapper {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 20px 20px 60px rgba(0,0,0,0.1);
+}
+
+.image-wrapper img {
+    width: 100%;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.image-wrapper:hover img {
+    transform: scale(1.05);
+}
+
+.year-badge {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: var(--color-orange);
+    color: white;
+    padding: 15px 30px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-top-right-radius: 20px;
+}
+
+.project-info {
+    flex: 1;
+}
+
+.location-tag {
+    color: var(--color-orange);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.9rem;
+}
+
+.project-info h2 {
+    font-size: 2.5rem;
+    color: var(--color-blue);
+    margin: 15px 0;
+}
+
+.specs-list {
+    list-style: none;
+    padding: 0;
+    margin: 25px 0;
+}
+
+.specs-list li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.specs-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--color-orange);
+}
+
+.btn-link {
+    text-decoration: none;
+    color: var(--color-blue);
+    font-weight: bold;
+    border-bottom: 2px solid var(--color-orange);
+    padding-bottom: 5px;
+    transition: all 0.3s;
+}
+
+.btn-link:hover {
+    letter-spacing: 1px;
+}
+
+
+@media (max-width: 992px) {
+    .project-row, .project-row.reverse {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .display-title { font-size: 2.5rem; }
+}

@@ -38,6 +38,10 @@ export const routes: Routes = [
             {
                 path: 'learn-about-us',
                 loadComponent: () => import('./components/learn-about-us/learn-about-us.component').then(m => m.LearnAboutUsComponent)
+            },
+            {
+                path: 'incoming-projects',
+                loadComponent: () => import('./components/incoming-projects/incoming-projects.component').then(m => m.IncomingProjectsComponent)
             }
         ],
         canActivate: [authenticatedGuard]
