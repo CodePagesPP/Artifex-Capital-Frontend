@@ -16,7 +16,6 @@
     background-attachment: fixed;
 }
 
-/* Hero Section */
 .contact-hero {
     padding: 60px 20px;
     text-align: center;
@@ -27,6 +26,7 @@
     font-size: 3.5rem;
     margin: 0;
     font-weight: 600;
+    color: var(--color-white);
 }
 
 .breadcrumb {
@@ -137,6 +137,10 @@ textarea { resize: none; }
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.info-content h3 {
+    color: var(--color-white);
 }
 
 .icon-circle {

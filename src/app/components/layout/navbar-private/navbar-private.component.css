@@ -15,7 +15,7 @@
 }
 
 .logo-v {
-  max-width: 120px;
+  max-width: 220px;
   height: auto;
   filter: brightness(0) invert(1); 
 }
@@ -88,12 +88,11 @@
   }
 
   .brand { margin-bottom: 0; }
-  .logo-v { max-width: 80px; }
+  .logo-v { max-width: 200px; }
   
   .sidebar-footer { margin-top: 0; }
   .btn-exit { padding: 0.5rem 1rem; font-size: 0.85rem; }
 
-  /* Se despega del header y se va al fondo de la pantalla */
   .navigation {
     position: fixed;
     bottom: 0;

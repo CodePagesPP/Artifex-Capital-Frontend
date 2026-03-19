@@ -1,5 +1,5 @@
 import { ApplicationConfig, provideZoneChangeDetection, importProvidersFrom } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withInMemoryScrolling } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
@@ -14,12 +14,23 @@ import { errorInterceptor } from './core/interceptors/error.interceptor';
 registerLocaleData(es);
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), 
+  providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }), 
     provideHttpClient(
       withFetch(),
       withInterceptors([errorInterceptor])
     ),
-    provideRouter(routes), provideNzI18n(es_ES), importProvidersFrom(FormsModule), provideAnimationsAsync(), provideHttpClient(), 
-    //provideClientHydration()
+    // Configuración del Router con Scroll Restoration
+    provideRouter(
+      routes, 
+      withInMemoryScrolling({ 
+        scrollPositionRestoration: 'enabled',
+        anchorScrolling: 'enabled' 
+      })
+    ), 
+    provideNzI18n(es_ES), 
+    importProvidersFrom(FormsModule), 
+    provideAnimationsAsync(),
+    // provideClientHydration() // Mantener comentado si te da problemas con SSR
   ]
 };
