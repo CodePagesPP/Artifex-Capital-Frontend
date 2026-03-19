@@ -31,3 +31,11 @@ export interface Page<T> {
   size: number;
   number: number; 
 }
+
+export interface ContactForm {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone?: string;
+  message: string;
+}

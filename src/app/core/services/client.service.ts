@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { AuthService } from './auth.service';
-import { Client, ClientUpdateData, Page } from '../models/client.model';
+import { Client, ClientUpdateData, ContactForm, Page } from '../models/client.model';
 import { Observable } from 'rxjs';
 import { ClientProjectResponse } from '../models/project-client.model';
 
@@ -10,8 +10,8 @@ import { ClientProjectResponse } from '../models/project-client.model';
   providedIn: 'root'
 })
 export class ClientService {
-private apiUrl = `${environment.apiUrl}/clients`;
-
+  private apiUrl = `${environment.apiUrl}/clients`;
+  private contactUrl = `${environment.apiUrl}/contact`;
   constructor(
     private http: HttpClient,
     private authService: AuthService
@@ -22,7 +22,7 @@ private apiUrl = `${environment.apiUrl}/clients`;
       .set('page', page.toString())
       .set('size', size.toString());
 
-  
+
     if (search) {
       params = params.set('search', search);
     }
@@ -35,7 +35,7 @@ private apiUrl = `${environment.apiUrl}/clients`;
 
   updateClientProjects(clientId: number, updateData: ClientUpdateData): Observable<Client> {
     const url = `${this.apiUrl}/${clientId}/projects`;
-    
+
     return this.http.put<Client>(url, updateData, {
       headers: this.authService.getAuthHeaders()
     });
@@ -45,5 +45,9 @@ private apiUrl = `${environment.apiUrl}/clients`;
     return this.http.get<ClientProjectResponse[]>(`${this.apiUrl}/me/projects`, {
       headers: this.authService.getAuthHeaders()
     });
+  }
+
+  sendContactMessage(data: ContactForm): Observable<any> {
+    return this.http.post(`${this.contactUrl}/send`, data);
   }
 }
