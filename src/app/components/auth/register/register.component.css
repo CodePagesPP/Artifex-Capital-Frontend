@@ -7,6 +7,19 @@
   padding: 20px;
 }
 
+/* Logo */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.logo-container img {
+  max-width: 300px;
+  height: auto;
+  object-fit: contain;
+}
+
 .card {
   background-color: var(--color-white);
   padding: 2rem;
@@ -219,6 +232,7 @@
 
   display: -webkit-box;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }

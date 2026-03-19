@@ -11,22 +11,22 @@ export class WhoWeAreComponent {
 
   introData = {
     title: 'Artifex Capital',
-    subtitle: 'Building the Future of Storage',
-    description: 'En Artifex Capital, transformamos espacios en oportunidades de alto rendimiento. Nuestra visión combina la solidez de la construcción tradicional con estrategias de inversión innovadoras, garantizando seguridad y crecimiento para nuestros socios.'
+    subtitle: 'Investing in Real Value',
+    description: 'Artifex Capital is a real estate investment firm focused on developing high-value residential projects and strategic property acquisitions. We combine market expertise, disciplined execution, and innovative investment structures to deliver consistent returns. Through our tokenized model, we make real estate investing more accessible, transparent, and scalable.'
   };
 
   teamMembers = [
-    { name: 'Nombre CEO', role: 'CEO & Founder', image: 'assets/placeholder-user.jpg' },
-    { name: 'Nombre Socio', role: 'Head of Construction', image: 'assets/placeholder-user.jpg' },
-    { name: 'Nombre Arq', role: 'Lead Architect', image: 'assets/placeholder-user.jpg' },
-    { name: 'Nombre Ing', role: 'Civil Engineer', image: 'assets/placeholder-user.jpg' }
+    { name: 'Diego Machado', role: 'CEO & Founder', image: 'assets/TEAM 1.png' },
+    { name: 'Luis Ishikawa', role: 'Production Manager', image: 'assets/TEAM 3.png' },
+    { name: 'Martin Ferradas', role: 'Marketing Director', image: 'assets/TEAM 4.png' },
+    { name: 'Saul Bazan', role: 'Founder', image: 'assets/TEAM 2.png' }
   ];
 
   foundationEvents = [
-    { year: '2015', title: 'El Inicio', description: 'Fundación de Artifex con la visión de revolucionar el sector.' },
-    { year: '2018', title: 'Expansión Regional', description: 'Primeros proyectos de gran envergadura en Washington.' },
-    { year: '2023', title: 'Artifex10x', description: 'Lanzamiento de la nueva división de capital privado.' },
-    { year: '2026', title: 'Presente', description: 'Liderando el mercado con tecnología y gestión eficiente.' }
+    { year: '2015', title: 'The Beginning', description: 'Artifex was founded with a clear vision: to transform the real estate investment landscape through innovation and efficiency.' },
+    { year: '2018', title: 'Regional Expansion', description: 'We successfully launched large-scale projects across Ohio, establishing a strong operational presence.' },
+    { year: '2023', title: 'Artifex10x', description: 'Introduction of our private capital division, enabling structured investment opportunities through modern financial models.' },
+    { year: '2026', title: 'Present', description: 'We continue to lead with technology-driven strategies and efficient project management, scaling opportunities for investors.'}
   ];
   
 }

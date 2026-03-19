@@ -5,20 +5,22 @@
             <span class="badge">Our Expertise</span>
             <h2>Learn About Us</h2>
             <div class="separator"></div>
-            <p class="intro-text">Una mirada profunda a nuestra estrategia y ejecución.</p>
+            <p class="intro-text">Discover how Artifex Capital is redefining real estate investing. Learn about our
+                vision, our team, and the systems we use to identify, develop, and scale profitable projects.</p>
         </div>
     </section>
 
     <section class="video-section" data-aos="zoom-in" data-aos-delay="200">
         <div class="container">
             <div class="video-wrapper">
-                <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=2072&auto=format&fit=crop"
-                    alt="Video Cover" class="video-cover">
+                <video #artifexVideo class="video-cover" loop playsinline (click)="toggleVideo(artifexVideo)" style="cursor: pointer;" poster="assets/PORTADA PRINCIPAL.png">
+                    <source src="assets/ARTIFEX CAPITAL MAIN WEB VIDEO .mp4" type="video/mp4">
+                    Tu navegador no soporta videos.
+                </video>
 
-                <div class="play-button">
+                <div class="play-button" (click)="toggleVideo(artifexVideo)" *ngIf="artifexVideo.paused">
                     <div class="triangle"></div>
                 </div>
-
             </div>
         </div>
     </section>
