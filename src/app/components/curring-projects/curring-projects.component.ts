@@ -16,32 +16,18 @@ export class CurringProjectsComponent {
 
   projects = [
     {
-      name: 'Salem Turnpike',
-      location: 'Norwich, CT',
-      description: '85,722 sq ft ground-up, three-story all interior climate-controlled',
-      units: 646,
-      image: '/curring-projects/1.webp'
+      name: 'Flip House #1',
+      location: 'Huntington, WV',
+      type: 'Single-family Home',
+      address: '314 Buffington St, Huntington, West Virginia',
+      image: '/curring-projects/flip-house-1.webp'
     },
     {
-      name: 'Shiloh',
-      location: 'Shiloh, PA',
-      description: 'Expansion project with new climate-controlled storage units.',
-      units: 420,
-      image: '/curring-projects/Norwich.webp'
-    },
-    {
-      name: 'Belle Road',
-      location: 'York, PA',
-      description: 'Ground-up construction featuring modern security systems.',
-      units: 512,
-      image: '/curring-projects/Belle-Road.webp'
-    },
-    {
-      name: 'Chambers Road',
-      location: 'Dover, DE',
-      description: 'Renovation of existing facilities into premium storage.',
-      units: 300,
-      image: '/curring-projects/Chambers-Road.webp'
+      name: 'Flip House #2',
+      location: 'Huntington, WV',
+      type: 'Single-family Home',
+      address: '4328 Altizer Ave, Huntington, West Virginia',
+      image: '/curring-projects/flip-house-2.webp'
     }
   ];
 

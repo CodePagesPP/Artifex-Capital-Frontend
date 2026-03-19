@@ -7,25 +7,33 @@
 
   <section class="form-container">
     <div class="contact-card">
-      
+
       <div class="form-section">
         <h2>Contact Us Today</h2>
-        <p class="subtitle">For more information, please fill out the form below, and we will get back to you as soon as possible.</p>
-        
-        <form class="contact-form">
+        <p class="subtitle">For more information, please fill out the form below, and we will get back to you as soon as
+          possible.</p>
+
+        <form class="contact-form" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
           <div class="form-row">
-            <input type="text" placeholder="First Name*" required>
-            <input type="text" placeholder="Last Name*" required>
+            <input type="text" placeholder="First Name*" formControlName="firstName">
+            <input type="text" placeholder="Last Name*" formControlName="lastName">
           </div>
           <div class="form-row">
-            <input type="email" placeholder="Email Address*" required>
-            <input type="tel" placeholder="Phone No.*">
+            <input type="email" placeholder="Email Address*" formControlName="email">
+            <input type="tel" placeholder="Phone No.*" formControlName="phone">
           </div>
-          <textarea placeholder="Message" rows="5"></textarea>
-          
+          <textarea placeholder="Message" rows="5" formControlName="message"></textarea>
+
           <div class="button-wrapper">
-            <button type="submit" class="btn-submit">Submit Request</button>
+            <button type="submit" class="btn-submit" [disabled]="isSending">
+              {{ isSending ? 'Sending...' : 'Submit Request' }}
+            </button>
           </div>
+
+          <p *ngIf="statusMessage" [ngStyle]="{'color': statusMessage.includes('Success') ? 'green' : 'red'}"
+            style="margin-top: 15px; font-weight: bold;">
+            {{ statusMessage }}
+          </p>
         </form>
       </div>
 
@@ -36,7 +44,7 @@
           </div>
           <h3>HOW CAN WE HELP?</h3>
           <p>Having trouble finding what you're looking for? Contact us today and we'd be glad to help!</p>
-          
+
           <div class="contact-methods">
             <div class="method-item">
               <span class="label">PHONE</span>
@@ -45,9 +53,9 @@
                 <a href="tel:717-779-0804">717-779-0804</a>
               </div>
             </div>
-            
+
             <div class="divider"></div>
-            
+
             <div class="method-item">
               <span class="label">EMAIL</span>
               <div class="method-link">
@@ -55,9 +63,9 @@
                 <a href="mailto:contact@irellc.com">contact&#64;irellc.com</a>
               </div>
             </div>
-            
+
             <div class="divider"></div>
-            
+
             <div class="method-item">
               <span class="label">LOCATION</span>
               <div class="method-link">

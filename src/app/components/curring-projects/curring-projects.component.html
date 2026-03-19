@@ -2,32 +2,20 @@
 
   <section class="hero-banner">
     <div class="hero-content" data-aos="zoom-in" data-aos-duration="1000">
-      <h1>Construction</h1>
+      <h1>CURRENT PROJECTS</h1>
     </div>
   </section>
 
   <section class="description-section">
     <div class="content-grid">
       <div class="text-content" data-aos="fade-right" data-aos-delay="200">
-        <h2 class="title-primary">Self Storage Construction Can Be Complicated</h2>
-        <p class="subtitle">Building a new self storage facility from the ground up or expanding an existing one can be challenging.</p>
-
-        <p class="intro-text">
-          Commercial construction has more regulations and nuances. Our team manages the entire process:
-        </p>
-
-        <ul class="check-list">
-          <li data-aos="fade-up" data-aos-delay="300"><i class="fas fa-check-circle"></i> Completing necessary applications.</li>
-          <li data-aos="fade-up" data-aos-delay="400"><i class="fas fa-check-circle"></i> Following specific municipal requirements.</li>
-          <li data-aos="fade-up" data-aos-delay="500"><i class="fas fa-check-circle"></i> Architects, engineers and contractors selection.</li>
-          <li data-aos="fade-up" data-aos-delay="600"><i class="fas fa-check-circle"></i> Stormwater management and building codes.</li>
-          <li data-aos="fade-up" data-aos-delay="700"><i class="fas fa-check-circle"></i> Complying with ADA requirements.</li>
-          <li data-aos="fade-up" data-aos-delay="800"><i class="fas fa-check-circle"></i> Obtaining certificate of occupancy.</li>
-        </ul>
+        <p class="subtitle">Our current portfolio includes active residential developments and high-potential
+          property transformations. Each project is carefully selected based on location, market
+          demand, and projected returns, ensuring strong performance and investor confidence.</p>
       </div>
 
       <div class="image-content" data-aos="fade-left" data-aos-delay="400">
-        <img src="curring-projects/construction-site.webp" alt="Construction Site" class="main-image shadow-effect">
+        <img src="curring-projects/construction.webp" alt="Construction Site" class="main-image shadow-effect">
       </div>
     </div>
   </section>
@@ -45,7 +33,8 @@
     <div class="project-display card" data-aos="fade-up" data-aos-offset="200">
       <div class="display-grid" [class.fade-in-up]="animateClass">
         <div class="project-image-wrapper">
-          <img [src]="projects[selectedProjectIndex].image" class="project-img-preview">
+          <img [src]="projects[selectedProjectIndex].image" class="project-img-preview"
+            alt="projects[selectedProjectIndex].name">
         </div>
 
         <div class="project-details">
@@ -53,10 +42,9 @@
             <i class="fas fa-map-marker-alt"></i>
             <p class="location">Located in {{ projects[selectedProjectIndex].location }}</p>
           </div>
-          <p class="stats">{{ projects[selectedProjectIndex].description }}</p>
+          <p class="stats">Property Type: {{ projects[selectedProjectIndex].type }}</p>
           <div class="unit-box">
-            <span class="unit-number">{{ projects[selectedProjectIndex].units }}</span>
-            <span class="unit-text">Units</span>
+            <span class="unit-number">Project address: {{ projects[selectedProjectIndex].address }}</span>
           </div>
         </div>
       </div>
@@ -65,9 +53,9 @@
 
   <section class="contact-cta" data-aos="flip-up">
     <div class="cta-content">
-      <h2 class="ready">Ready to start your project?</h2>
-      <p>Contact Investment Real Estate Today</p>
-      <a routerLink="/contact" class="btn-cta">Contact Us Now</a>
+      <h2 class="ready">Ready to start investing in real estate?</h2>
+      <p>Be part of high-performing residential projects with structured returns.</p>
+      <a routerLink="/contact" class="btn-cta">Become an Investor</a>
     </div>
   </section>
 
@@ -75,7 +63,7 @@
     <h3 class="name-text">Tom Kilko, P.E.</h3>
     <p class="role">Director of Development and Construction</p>
     <div class="contact-info">
-      <span class="contact-item"><i class="fas fa-envelope"></i> 
+      <span class="contact-item"><i class="fas fa-envelope"></i>
         <a href="mailto:tkilko@irellc.com">tkilko&#64;irellc.com</a>
       </span>
       <span class="contact-item"><i class="fas fa-phone"></i> 717-893-0513</span>
