@@ -1,5 +1,5 @@
 <div class="contact-page">
-  <header class="contact-hero">
+  <header class="contact-hero" data-aos="fade-down" data-aos-duration="800">
     <div class="hero-content">
       <h1>Contact Us</h1>
     </div>
@@ -8,38 +8,30 @@
   <section class="form-container">
     <div class="contact-card">
 
-      <div class="form-section">
+      <div class="form-section" data-aos="fade-right" data-aos-delay="200" data-aos-duration="1000">
         <h2>Contact Us Today</h2>
-
         <p class="subtitle">Get in touch with our team to learn more about current opportunities or partnership options.</p>
 
-        <form class="contact-form" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+        <form class="contact-form">
           <div class="form-row">
-            <input type="text" placeholder="First Name*" formControlName="firstName">
-            <input type="text" placeholder="Last Name*" formControlName="lastName">
+            <input type="text" placeholder="First Name*">
+            <input type="text" placeholder="Last Name*">
           </div>
           <div class="form-row">
-            <input type="email" placeholder="Email Address*" formControlName="email">
-            <input type="tel" placeholder="Phone No.*" formControlName="phone">
+            <input type="email" placeholder="Email Address*">
+            <input type="tel" placeholder="Phone No.*">
           </div>
-          <textarea placeholder="Message" rows="5" formControlName="message"></textarea>
+          <textarea placeholder="Message" rows="5" style="margin-bottom: 15px;"></textarea>
 
           <div class="button-wrapper">
-            <button type="submit" class="btn-submit" [disabled]="isSending">
-              {{ isSending ? 'Sending...' : 'Submit Request' }}
-            </button>
+            <button type="submit" class="btn-submit">Submit Request</button>
           </div>
-
-          <p *ngIf="statusMessage" [ngStyle]="{'color': statusMessage.includes('Success') ? 'green' : 'red'}"
-            style="margin-top: 15px; font-weight: bold;">
-            {{ statusMessage }}
-          </p>
         </form>
       </div>
 
-      <div class="info-section">
+      <div class="info-section" data-aos="fade-left" data-aos-delay="500" data-aos-duration="1000">
         <div class="info-content">
-          <div class="icon-circle">
+          <div class="icon-circle" style="font-size: 2rem; margin-bottom: 15px;">
             <i class="fas fa-comments chat-icon"></i>
           </div>
           <h3>HOW CAN WE HELP?</h3>
@@ -47,30 +39,30 @@
 
           <div class="contact-methods">
             <div class="method-item">
-              <span class="label">PHONE</span>
+              <span class="label" style="display:block; font-size: 0.8rem; opacity: 0.8;">PHONE</span>
               <div class="method-link">
                 <i class="fas fa-phone-alt"></i>
-                <a href="tel:717-779-0804">(740) 550-0376</a>
+                <a href="tel:7405500376">(740) 550-0376</a>
               </div>
             </div>
 
             <div class="divider"></div>
 
             <div class="method-item">
-              <span class="label">EMAIL</span>
+              <span class="label" style="display:block; font-size: 0.8rem; opacity: 0.8;">EMAIL</span>
               <div class="method-link">
                 <i class="fas fa-envelope"></i>
-                <a href="mailto:contact@irellc.com">admin&#64;artifexbds.com</a>
+                <a href="mailto:admin@artifexbds.com">admin&#64;artifexbds.com</a>
               </div>
             </div>
 
             <div class="divider"></div>
 
             <div class="method-item">
-              <span class="label">LOCATION</span>
+              <span class="label" style="display:block; font-size: 0.8rem; opacity: 0.8;">LOCATION</span>
               <div class="method-link">
                 <i class="fas fa-map-marker-alt"></i>
-                <address>South Point,<br>OH</address>
+                <address style="display: inline; font-style: normal;">South Point, OH</address>
               </div>
             </div>
           </div>
