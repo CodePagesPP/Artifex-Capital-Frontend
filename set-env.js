@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 
-const targetPathDev = './src/app/environments/environment.ts'; 
+const targetPathDev = './src/environments/environment.ts'; 
 
 const backendUrl = process.env.URL_BACKEND || 'http://localhost:8080/api/v1';
 
