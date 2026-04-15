@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "node dist/qore-frontend/server/server.mjs",
+    "build": "node set-env.js && ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:artifex-capital-frontend": "node dist/artifex-capital-frontend/server/server.mjs"
