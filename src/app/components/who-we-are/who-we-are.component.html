@@ -15,30 +15,6 @@
         </div>
     </section>
 
-    <section class="section team-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Our Team</h2>
-                <div class="separator"></div>
-                <p>Experts united by excellence</p>
-            </div>
-
-            <div class="team-grid">
-                @for (member of teamMembers; track member.name; let i = $index) {
-                <div class="team-card" data-aos="fade-up" [attr.data-aos-delay]="i * 100">
-                    <div class="img-wrapper">
-                        <img [src]="member.image" [alt]="member.name">
-                    </div>
-                    <div class="card-info">
-                        <h4>{{ member.name }}</h4>
-                        <span>{{ member.role }}</span>
-                    </div>
-                </div>
-                }
-            </div>
-        </div>
-    </section>
-
     <section class="section foundation-section">
         <div class="container">
             <div class="section-header">
