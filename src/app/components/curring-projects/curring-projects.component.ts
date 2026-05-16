@@ -27,14 +27,14 @@ export class CurringProjectsComponent {
       location: 'Huntington, WV',
       type: 'Two-story single-family home',
       address: '314 Buffington St, Huntington, West Virginia',
-      image: '/curring-projects/project.webp'
+      image: '/curring-projects/flip-house-1.webp'
     },
     {
       name: 'Flip Number #2 — 4326 Altizer Ave',
       location: 'Huntington, WV',
       type: 'One-story single-family residence',
       address: '4326 Altizer Ave, Huntington, West Virginia',
-      image: '/curring-projects/project.webp'
+      image: '/curring-projects/flip-house-2.webp'
     },
     {
       name: 'Creekside Estates — 10 Premium Homes',
